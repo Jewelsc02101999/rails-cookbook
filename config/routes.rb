@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # categories
-  resources :categories, only: [:index, :new, :create, :show]
+  resources :categories, only: [:index, :new, :create, :show] do
+    resources :bookmarks, only: [:new, :create]
+  end
 
   # bookmarks
-  resources :categories do
-    resources :bookmarks, only: [:new, :destroy, :show]
-  end
+  resources :bookmarks, only: [:destroy]
 
   # reipes (will have index)
 
